@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final String AUTHORITY = "com.applicationsmobile.notesprovider";
     private static final String TABLE_NAME = "notesAM";
-    private static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+    //private static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+    private static final Uri CONTENT_URI = Uri.parse("content://com.applicationsmobile.notesprovider/notesAM");
+
+
 
 
     EditText idET, nomET, prenomET, testET, examenET, moyenneET;
@@ -55,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         float moyenne = moyenneET.getText().toString().isEmpty() ? 0 : Float.parseFloat(moyenneET.getText().toString()); */
 
 
-        Button insertButton = findViewById(R.id.insererBtn);
-        Button queryButton = findViewById(R.id.rechercheBtn);
-        Button updateButton = findViewById(R.id.miseAjourBtn);
-        Button deleteButton = findViewById(R.id.supprimerBtn);
+        Button insererBtn = findViewById(R.id.insererBtn);
+        Button rechercheBtn = findViewById(R.id.rechercheBtn);
+        Button miseAjourBtn = findViewById(R.id.miseAjourBtn);
+        Button supprimerBtn = findViewById(R.id.supprimerBtn);
 
-        insertButton.setOnClickListener(new View.OnClickListener() {
+        insererBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!idET.getText().toString().trim().isEmpty()) {
@@ -78,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        queryButton.setOnClickListener(new View.OnClickListener() {
+        rechercheBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 queryData();
             }
         });
 
-        updateButton.setOnClickListener(new View.OnClickListener() {
+        miseAjourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!idET.getText().toString().trim().isEmpty()) {
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
+        supprimerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!idET.getText().toString().isEmpty()) {
